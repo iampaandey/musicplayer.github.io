@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" integrity="sha512-PgQMlq+nqFLV4ylk1gwUOgm6CtIIXkKwaIHp/PAIWHzig/lKZSEGKEysh0TCVbHJXCLN7WetD8TFecIky75ZfQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="D:\Javascript Project/styling.css" />
+</head>
+<body>
+    <div class="main_div">
+        <div class="logo"><a href="D:\Javascript Project/aboutplayer.html">ABOUT</a></div>
+        <div class="search">
+            <input type="text" class="text" id="text"  placeholder="Search For Music">
+            <button type="button" class="button">Search</button>
+        </div>
+        <div class="music_container">
+            <h2 id="title">Bhar Do Jholi Meri</h2>
+            <h3 id="artist">Adnan Sami</h3>
+            <div class="image_container">
+                <img src="D:\Javascript Project\images/image1.jpg" alt="" />
+            </div>
+            <audio src="D:\Javascript Project\music/song1.mp3"></audio>
+           
+            <div class="music_controls">
+                <i class="fas fa-backward" id="prev" title="Previous"></i>
+                <i class="fas fa-play main_button" id="play" title="Play"></i>
+                <i class="fas fa-forward" id="next" title="Next"></i>
+            </div>
+
+        </div>
+    </div>
+    <script>
+        const music = document.querySelector('audio');
+        const play = document.getElementById("play");
+        const img = document.querySelector("img");
+        const title = document.getElementById("title");
+        const artist = document.getElementById("artist");
+        const prev = document.getElementById("prev");
+        const next = document.getElementById("next");
+        const button = document.querySelector("button");
+        
+
+        const songs = [ 
+        {
+            name : "song1",
+           title : "bhar do jholi meri",
+           artist : "Adnan Sami",
+           picture : "image1",
+        },
+        {   name: "song2",
+           title : "wavin flag",
+           artist : "Knaan",
+           picture : "image2",
+        } ,
+        
+        {  name: "song3",
+          title:"khudaya khair",
+           artist:"KK", 
+           picture : "image3",
+        },
+        {
+            name: "song4",
+            title:"tum ho mera pyar",
+            artist:"KK",
+            picture:"image4"
+        },
+        {  name: "song5",
+            title:"soch na sake",
+            artist:"Arijit Singh",
+            picture:"image5"
+        },
+        {name: "song6",
+            title:"zara sa",
+            artist:"kk",
+            picture:"image6"
+        },
+        {
+            name: "song7",
+            title:"jo bhi main",
+            artist:"mohit chauhan",
+            picture:"image7"
+        }
+        ]
+        
+       
+       //for music search
+       const searche = () => {
+           var haswritten = document.getElementById("text").value.toLowerCase();
+           console.log(haswritten)
+           for(let i=0;i<songs.length;i++){
+          
+               if(songs[i].title==haswritten){
+                   loadSong(songs[i]);
+                   
+                   music.play();
+                   play.classList.replace("fa-play","fa-pause");
+                   img.classList.add("anime");   
+               }
+           }
+       }
+           button.addEventListener("click",searche);
+        
+        let isPlaying = false;
+        //for play music
+        const playMusic= () => {
+            isPlaying=true;
+            music.play();
+            play.classList.replace("fa-play","fa-pause");
+            img.classList.add("anime");
+        };
+        //for pause music
+        const pauseMusic= () => {
+            isPlaying=false;
+            music.pause();
+            play.classList.replace("fa-pause","fa-play");
+            img.classList.remove("anime");
+        };
+        play.addEventListener("click", () => {
+        if(isPlaying){
+            pauseMusic();
+        }else{
+            playMusic();
+        };
+    });
+    //changing the music data
+     
+    const loadSong = (songs) => {
+        title.textContent = songs.title;
+        artist.textContent = songs.artist;
+        music.src = "music/" + songs.name + ".mp3";
+        img.src = "images/" + songs.picture + ".jpg";
+    }
+      songIndex = 0;
+      const nextSong= () => {
+      songIndex = (songIndex+1) % songs.length;
+      loadSong(songs[songIndex]);
+      playMusic();
+      };
+      const prevSong= () => {
+      songIndex = (songIndex-1 + songs.length) % songs.length;
+      loadSong(songs[songIndex]);
+      playMusic();
+      };
+      next.addEventListener("click", nextSong);
+      prev.addEventListener("click",prevSong);
+    </script>
+</body>
+</html>
