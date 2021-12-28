@@ -141,7 +141,7 @@ img{
     margin-right: 75rem;
     font-weight: 950;
 }
-a:link{
+a:link,:visited{
     text-decoration: none;
     color: rgb(255, 8, 8);
 }
@@ -162,20 +162,23 @@ a:hover{
          display: block;
           }
    .music_container{
-       width: 15rem;
-       height: 20rem;
-       margin-top: 10%;
-     margin-left: 4.5rem;
+       width: 20rem;
+       height: 25rem;
+/*     initial 15 20    */
+       margin-top: 20%;
+/*    initial 10     */
+     margin-left: 3.8rem;
+/*      initial 4rem   */
      /* 15 20 5 */
        }
    .music_container #title{
        margin-top: 0%;
-       font-size: 1.4rem;  
+       font-size: 2rem;  
        /* intially 1.5 */
        
    }
    .music_container #artist{
-       font-size: 1rem;
+       font-size: 1.5rem;
        /* intially 1 */
    }
    
@@ -184,18 +187,26 @@ a:hover{
     height: auto;
 }
  .music_controls{
-     width: 6rem;
-     margin-top: 1rem;
-     /* 10 2 */
+     width: 10rem;
+     margin-top: 1.7rem;
+     /*initial 6 1 */
  }
  .music_controls .fas{
-     font-size: 0.8rem;
+     font-size: 1.3rem;
+/*  initial 0.8rem     */
  }
  .music_controls .main_button{
-     width: 1.5rem;
-     height: 1.5rem;
+     width: 2rem;
+     height: 2rem;
      justify-content: center;
-     /* 2 2 */
+     /* 1.5rem 1.5rem */
+ }
+     .button{
+     height: 3rem;
+     width: 4.5rem;
+ }
+ .text{
+     height: 3rem;
  }
 }
 
